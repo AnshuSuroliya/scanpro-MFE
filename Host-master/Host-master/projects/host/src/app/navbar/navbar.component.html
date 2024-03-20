@@ -1,0 +1,24 @@
+<div class="page-wrapper" style="z-index: 10;">
+    <div class="nav-wrapper">
+     <nav class="navbar">
+       <img src="../../assets/ScanProLogo.png" alt="Company Logo">
+       <div class="menu-toggle" id="mobile-menu" (click)="toggleMenu()">
+         <span class="bar"></span>
+         <span class="bar"></span>
+         <span class="bar"></span>
+       </div>
+       <ul class="nav no-search">
+         <li class="nav-item" *ngIf="loggedIn"><button  (click)="GoToHome()">Home</button></li>
+         <li class="nav-item" *ngIf="loggedIn && isAdmin"><button (click)="GoToAdminDashboard()" >Admin Dashboard</button></li>
+         <li class="nav-item" *ngIf="loggedIn">
+          <button class="px-5 text-white text-md font-bold mx-2" (click)="GotToUserDetails()">Profile</button>
+        </li>
+        <li class="nav-item" *ngIf="loggedIn">
+          <button class="px-5 text-white text-md font-bold" (click)="Logout()">Logout</button>
+        </li>
+
+        
+       </ul>
+     </nav>
+    </div>
+   </div>

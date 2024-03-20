@@ -1,0 +1,164 @@
+<!-- <div class="container">
+    <h2 class="header">Manage Users</h2>
+    <div class="search-container">
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Search" class="search-input" (input)="filterUsers()">
+        <button class="search-button">
+            <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+        </button>
+    </div>
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="filteredUsers.length > 0; else noMatches">
+                <tr *ngFor="let user of filteredUsers; let i = index" [class.even]="i % 2 === 0" [class.odd]="i % 2 !== 0">
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                        <fa-icon [icon]="faUser" class="user-icon"></fa-icon>
+                        {{ user.fullname }}
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                        <button class="update-role-button" (click)="handlePromoteUser(user)">Update Role</button>
+                        <button class="delete-button" (click)="showDeleteConfirmation(user)">Delete</button>
+                    </td>
+                </tr>
+            </ng-container>
+            <ng-template #noMatches>
+                <tr>
+                    <td colspan="5" class="no-matches" style="text-align: center;">No matches found</td>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+    
+ 
+  <div *ngIf="isDeleteConfirmationOpen && selectedUser" class="modal">
+    <div class="modal-content">
+        <h3 style="text-align: center;">Delete User</h3>
+        <p style="text-align: center;">Are you sure you want to delete {{ selectedUser.fullname }}?</p>
+        <div class="button-group">
+            <button class="yes-button" (click)="confirmDeleteUser()">Yes</button>
+            <button class="no-button" (click)="closeDialog()">No</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="editMode && selectedUser" class="modal">
+    <div class="modal-content">
+        <h3 style="text-align: center;">Edit Role</h3>
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" [(ngModel)]="selectedUser.fullname" disabled>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" [(ngModel)]="selectedUser.email" disabled>
+        </div>
+        <div class="form-group">
+            <label for="newRole" >Role:</label>
+            <select id="newRole" [(ngModel)]="newRole">
+                <option value="" disabled>Select Role</option>
+                <option value="admin">ADMIN</option>
+                <option value="user">USER</option>
+            </select>
+        </div>
+        <div class="button-group">
+            <button class="btn-save" (click)="handleSaveRole()" style="height: 50px;font-size: 18px;">Save</button>
+            <button class="btn-cancel" (click)="editMode = false">Cancel</button>
+        </div>
+    </div>
+</div>
+</div> -->
+<div class="container">
+    <h2 class="header">Manage Users</h2>
+    <div class="search-container">
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Search" class="search-input" (input)="filterUsers()">
+        <button class="search-button" (click)="filterUsers()" style="margin-top: -60px;">
+           
+        </button>
+    </div>
+    <table class="user-table">
+        <thead>
+            <tr style="background-color: #f5f5f5;">
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="filteredUsers.length > 0; else noMatches">
+                <tr *ngFor="let user of filteredUsers; let i = index" [class.even]="i % 2 === 0" [class.odd]="i % 2 !== 0">
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                        <i class="fa fa-user user-icon"></i>
+                        {{ user.fullname }}
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                        <button class="update-role-button" (click)="handlePromoteUser(user)" style="background-color: #5995fd;height:35px;width: 50%;border-radius: 7px;color: white;font-size: 18px;">Update Role</button>&nbsp;
+                        <button class="delete-button" (click)="showDeleteConfirmation(user)" style="background-color: #f44336;height:35px;width: 40%;border-radius: 7px;color:white;font-size: 18px;">Delete</button>
+                    </td>
+                </tr>
+            </ng-container>
+            <ng-template #noMatches>
+                <tr>
+                    <td colspan="5" class="no-matches" style="text-align: center;font-size: 20px;font-weight: bold;">No matches found</td>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+
+    <!-- Add the delete confirmation modal -->
+    <div *ngIf="isDeleteConfirmationOpen && selectedUser" class="modal">
+        <div class="modal-content">
+            <h3 style="text-align: center;">Delete User</h3>
+            <p style="text-align: center;">Are you sure you want to delete {{ selectedUser.fullname }}?</p>
+            <div class="button-group">
+                <button class="yes-button" (click)="confirmDeleteUser()" style="background-color: #2196f3;height:40px;color:white">Yes</button>
+                <button class="no-button" (click)="closeDialog()" style="background-color: #f44336;height:40px;color: white;">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update role form -->
+    <div *ngIf="editMode && selectedUser" class="modal">
+        <div class="modal">
+            <div class="modal-content">
+                <h3 style="text-align: center;">Edit Role</h3>
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" [(ngModel)]="selectedUser.fullname" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" [(ngModel)]="selectedUser.email" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="newRole">Role:</label>
+                    <select id="newRole" [(ngModel)]="newRole" required>
+                        <option value="" disabled>Select Role</option>
+                        <option value="admin">ADMIN</option>
+                        <option value="user">USER</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button class="btn-save" (click)="handleSaveRole()" [disabled]="newRole === ''">Save</button>
+                    <button class="btn-cancel" (click)="editMode = false">Cancel</button>
+                </div>
+                
+            </div>
+        </div>
+        
+</div>

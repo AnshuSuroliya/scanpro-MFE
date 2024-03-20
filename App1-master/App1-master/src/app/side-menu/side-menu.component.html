@@ -1,0 +1,23 @@
+<!-- side-menu.component.html -->
+
+<div class="side-menu-container">
+    <div class="admin-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Admin Icon" class="admin-icon">
+        <span class="admin-title">Admin</span>
+    </div>
+  
+    <ul class="menu-list">
+        <li class="menu-item" (click)="handleShowManageUsers()">
+            <div class="menu-item-wrapper">
+                <!-- <fa-icon [icon]="['fas', 'user']" class="menu-icon"></fa-icon> -->
+                <button class="menu-button">Manage Users</button>
+            </div>
+        </li>
+        <li class="menu-item" (click)="handleShowUserDetails()">
+            <div class="menu-item-wrapper">
+                <!-- <fa-icon [icon]="['fas', 'users']" class="menu-icon"></fa-icon> -->
+                <button class="menu-button">User Details</button>
+            </div>
+        </li>
+    </ul>
+</div>

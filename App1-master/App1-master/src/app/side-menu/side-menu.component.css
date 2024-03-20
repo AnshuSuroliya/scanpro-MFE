@@ -1,0 +1,75 @@
+/* side-menu.component.css */
+
+.side-menu-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-right: 1px solid #d3d3d3;
+    min-width: 200px;
+    height: 100vh;
+}
+
+.side-menu-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.admin-icon {
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    margin-left: -15px;
+}
+
+.admin-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #5995fd;
+}
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-item {
+    margin-bottom: 10px;
+}
+
+.menu-item-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    margin-right: 10px;
+    color: #5995fd;
+}
+
+.menu-button {
+    border: none;
+    background: none;
+    font-weight: bold;
+    color: #5995fd;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+/* Add a pseudo-element for the right border */
+.side-menu-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 200px; /* Adjust the position to align with the right border */
+    width: 1px;
+    background-color: #d3d3d3; /* Same as the border color */
+}

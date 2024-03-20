@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": [],
+    "target": "es2020"
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts",
+   
+    "src/app/admin-dashboard/admin-dashboard.module.ts",
+    "src/app/edit-profile-page/edit-profile-page.module.ts",
+    "src/app/side-menu/side-menu.module.ts",
+    "src/app/user-details/user-details.module.ts",
+    "src/app/user-management-page/user-management-page.module.ts",
+  ]
+}
